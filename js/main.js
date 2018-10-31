@@ -1,156 +1,79 @@
-    /**
-     * Handles the sign in button press.
-     */
-    function toggleSignIn() {
-        if (firebase.auth().currentUser) {
-          // [START signout]
-          firebase.auth().signOut();
-          // [END signout]
-        } else {
-          let email = document.getElementById('email').value;
-          let password = document.getElementById('password').value;
-          if (email.length < 4) {
-            alert('Please enter an email address.');
-            return;
-          }
-          if (password.length < 4) {
-            alert('Please enter a password.');
-            return;
-          }
-          // Sign in with email and pass.
-          // [START authwithemail]
-          firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            let errorCode = error.code;
-            let errorMessage = error.message;
-            // [START_EXCLUDE]
-            if (errorCode === 'auth/wrong-password') {
-              alert('Wrong password.');
-            } else {
-              alert(errorMessage);
-            }
-            console.log(error);
-            document.getElementById('quickstart-sign-in').disabled = false;
-            // [END_EXCLUDE]
-          });
-          // [END authwithemail]
-        }
-        document.getElementById('quickstart-sign-in').disabled = true;
+(function () {
+  document.getElementById("btn_signup").addEventListener('click', signup, false);
+  document.getElementById("btn_login").addEventListener('click', login, false);
+
+  requestNotificationPermission();
+})();
+
+function signup(e) {
+  e.preventDefault();
+
+  let email = document.getElementById("signup_email").value;
+  let password = document.getElementById("signup_password").value;
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(function (response) {
+    sendNotification('Thanks for signing up to our website! Check your e-mail for account verification!');
+    sendVerificationEmail(response.user);
+  })
+    .catch(function (error) {
+    // Handle Errors here.
+    let errorCode = error.code;
+    let errorMessage = error.message;
+
+    console.log(errorCode, errorMessage);
+    document.getElementById('signup_error').innerHTML = errorCode + " - " + errorMessage;
+  });
+}
+
+function login(e) {
+  e.preventDefault();
+
+  let email = document.getElementById("login_email").value;
+  let password = document.getElementById("login_password").value;
+
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(function (response) {
+    sendNotification('You are now logged in successfully!');
+    showUserInfo(response.user);
+  })
+    .catch(function (error) {
+    // Handle Errors here.
+    let errorCode = error.code;
+    let errorMessage = error.message;
+
+    console.log(errorCode, errorMessage);
+    document.getElementById('login_error').innerHTML = errorCode + " - " + errorMessage;
+  });
+}
+
+function sendVerificationEmail(user) {
+  user.sendEmailVerification()
+    .then(function () {
+    // Email sent.
+  }).catch(function (error) {
+    // Handle Errors here.
+    let errorCode = error.code;
+    let errorMessage = error.message;
+
+    console.log(errorCode, errorMessage);
+  });
+}
+
+function sendNotification(msg) {
+  let notif = new Notification(msg);
+}
+
+function requestNotificationPermission() {
+  if (Notification && Notification.permission === 'default') {
+    Notification.requestPermission(function (permission) {
+      if (!('permission' in Notification)) {
+        Notification.permission = permission;
       }
-      /**
-       * Handles the sign up button press.
-       */
-      function handleSignUp() {
-        let email = document.getElementById('email').value;
-        let password = document.getElementById('password').value;
-        if (email.length < 4) {
-          alert('Please enter an email address.');
-          return;
-        }
-        if (password.length < 4) {
-          alert('Please enter a password.');
-          return;
-        }
-        // Sign in with email and pass.
-        // [START createwithemail]
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-          // Handle Errors here.
-          let errorCode = error.code;
-          let errorMessage = error.message;
-          // [START_EXCLUDE]
-          if (errorCode == 'auth/weak-password') {
-            alert('The password is too weak.');
-          } else {
-            alert(errorMessage);
-          }
-          console.log(error);
-          // [END_EXCLUDE]
-        });
-        // [END createwithemail]
-      }
-      /**
-       * Sends an email verification to the user.
-       */
-      function sendEmailVerification() {
-        // [START sendemailverification]
-        firebase.auth().currentUser.sendEmailVerification().then(function() {
-          // Email Verification sent!
-          // [START_EXCLUDE]
-          alert('Email Verification Sent!');
-          // [END_EXCLUDE]
-        });
-        // [END sendemailverification]
-      }
-      function sendPasswordReset() {
-        let email = document.getElementById('email').value;
-        // [START sendpasswordemail]
-        firebase.auth().sendPasswordResetEmail(email).then(function() {
-          // Password Reset Email Sent!
-          // [START_EXCLUDE]
-          alert('Password Reset Email Sent!');
-          // [END_EXCLUDE]
-        }).catch(function(error) {
-          // Handle Errors here.
-          let errorCode = error.code;
-          let errorMessage = error.message;
-          // [START_EXCLUDE]
-          if (errorCode == 'auth/invalid-email') {
-            alert(errorMessage);
-          } else if (errorCode == 'auth/user-not-found') {
-            alert(errorMessage);
-          }
-          console.log(error);
-          // [END_EXCLUDE]
-        });
-        // [END sendpasswordemail];
-      }
-      /**
-       * initApp handles setting up UI event listeners and registering Firebase auth listeners:
-       *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
-       *    out, and that is where we update the UI.
-       */
-      function initApp() {
-        // Listening for auth state changes.
-        // [START authstatelistener]
-        firebase.auth().onAuthStateChanged(function(user) {
-          // [START_EXCLUDE silent]
-          document.getElementById('quickstart-verify-email').disabled = true;
-          // [END_EXCLUDE]
-          if (user) {
-            // User is signed in.
-            let displayName = user.displayName;
-            let email = user.email;
-            let emailVerified = user.emailVerified;
-            let photoURL = user.photoURL;
-            let isAnonymous = user.isAnonymous;
-            let uid = user.uid;
-            let providerData = user.providerData;
-            // [START_EXCLUDE]
-            document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-            document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-            document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
-            if (!emailVerified) {
-              document.getElementById('quickstart-verify-email').disabled = false;
-            }
-            // [END_EXCLUDE]
-          } else {
-            // User is signed out.
-            // [START_EXCLUDE]
-            document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-            document.getElementById('quickstart-sign-in').textContent = 'Sign in';
-            document.getElementById('quickstart-account-details').textContent = 'null';
-            // [END_EXCLUDE]
-          }
-          // [START_EXCLUDE silent]
-          document.getElementById('quickstart-sign-in').disabled = false;
-          // [END_EXCLUDE]
-        });
-        // [END authstatelistener]
-        document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
-        document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
-        document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
-        document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
-      }
-      window.onload = function() {
-        initApp();
-      };
+    });
+  }
+}
+
+function showUserInfo(user) {
+  document.getElementById('user_info').innerHTML = "<h1> Welcome " + user.email + " ! </h1>";
+}

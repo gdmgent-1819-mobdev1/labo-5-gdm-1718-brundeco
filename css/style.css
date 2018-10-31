@@ -2,6 +2,7 @@ body {
     width: 60%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin: 0 auto;
 }
 
@@ -10,9 +11,9 @@ form {
     background: #FAFAFA;
     padding: 30px;
     margin: 50px auto;
-    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    /* box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35); */
     border-radius: 10px;
-    border: 6px solid #305A72;
+    border: 2px solid #305A72;
 }
 
 form ul {
