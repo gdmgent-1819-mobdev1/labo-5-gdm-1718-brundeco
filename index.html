@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    let config = {
+        apiKey: "AIzaSyBWMEIJDFgh1SA5TFEZ3ntO7HX-L49Ptpc",
+        authDomain: "labo-5-bd772.firebaseapp.com",
+        databaseURL: "https://labo-5-bd772.firebaseio.com",
+        projectId: "labo-5-bd772",
+        storageBucket: "labo-5-bd772.appspot.com",
+        messagingSenderId: "903598537431"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Firebase</title>
+</head>
+<body>
+    <form>
+        <ul>
+        <li>
+            <input type="email" name="field2" class="field-style field-full align-none" placeholder="Email" id="email">
+        </li>
+        <li>
+            <input type="text" name="field3" class="field-style field-full align-none" placeholder="Password" id="password">
+        </li>
+        <li>
+            <input type="submit" value="Register" />
+        </li>
+        </ul>
+    </form>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
