@@ -1,5 +1,7 @@
+let message = document.getElementById('message');
+message.setAttribute('class', 'container margin-top');
+
 (function() {
-  // Initialize Firebase
   const config = {
     apiKey: "AIzaSyBWMEIJDFgh1SA5TFEZ3ntO7HX-L49Ptpc",
     authDomain: "labo-5-bd772.firebaseapp.com",
@@ -9,6 +11,8 @@
     messagingSenderId: "903598537431"
   };
   firebase.initializeApp(config);
+
+
 
   const txtEmail = document.getElementById('txtEmail');
   const txtPassword = document.getElementById('txtPassword');
@@ -22,12 +26,11 @@
     const auth = firebase.auth();
 
     const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
-
-    let message = document.getElementById('message');
-    console.log(message);
-    message.innerHTML('Welcome to your page');
+    promise.then(loginSuccesfull, message.innerHTML = 'Welcome ' + email + '!');
+    promise.catch(e => message.innerHTML = 'Fail');
   });
+
+
 
   btnSignUp.addEventListener('click', e => {
     const email = txtEmail.value;
@@ -35,11 +38,13 @@
     const auth = firebase.auth();
 
     const promise = auth.createUserWithEmailAndPassword(email, pass);
+    promise.then(registerSuccesfull, message.innerHTML = 'Welcome, you registered succesfully with ' + email + '!');
     promise.catch(e => console.log(e.message));
   });
 
   btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
+    message.innerHTML = 'Logout succesful';
   });
 
 
@@ -54,6 +59,6 @@
       btnLogout.classList.add('hide');
     }
   })
-
-
 }());
+
+
