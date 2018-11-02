@@ -39,7 +39,7 @@ message.setAttribute('class', 'container margin-top');
 
     const promise = auth.createUserWithEmailAndPassword(email, pass);
     promise.then(registerSuccesfull, message.innerHTML = 'Welcome, you registered succesfully with ' + email + '!');
-    promise.catch(e => console.log(e.message));
+    promise.catch(e => message.innerHTML = 'Fail');
   });
 
   btnLogout.addEventListener('click', e => {

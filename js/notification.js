@@ -25,6 +25,8 @@ function registerSuccesfull() {
 function loginSuccesfull() {
   const email = document.getElementById('txtEmail').value;
   const text = 'You are now logged in with ' + email;
+  // const currentUser = document.getElementById('currentUser');
+  // currentUser.innerHTML = 'LOGGED IN AS ' + '<br>' + email;
   if (!("Notification" in window)) {
     alert("This browser does not support system notifications");
   }
