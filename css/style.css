@@ -47,5 +47,5 @@ body {
 }
 
 input:focus {
-    border-bottom: 0.5px solid #495aff !important;
+    border-bottom: 1px solid #d63636 !important;
 }

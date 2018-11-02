@@ -15,8 +15,8 @@
 
 <body>
     <!-- - - - - - - - - - - - - - - LOG IN - - - - - - - - - - - - - - -->
-    <div class="container container-login stick stick-1">
-        <h4>Please login or register</h4>
+    <div class="container container-login stick stick-1" id="stick-1">
+        <h4>Please login / register</h4>
         <input type="text" id="txtEmail" placeholder="email">
         <input type="password" id="txtPassword" placeholder="password">
 
@@ -26,8 +26,15 @@
         <div id="message" class="container"></div>
     </div>
 
+    <!-- - - - - - - - - - - - - - - LOG IN SUCCES - - - - - - - - - - - - - - -->
+    <div class="container container-login stick stick-2" id="stick-3">
+        <h4>Succes!</h4>
+        <button id="btnLogout2" class="btn btn-action hide cyan accent-2>">Log out</button>
+        <div id="message2" class="container"></div>
+    </div>
+
     <!-- - - - - - - - - - - - - - - BLOG - - - - - - - - - - - - - - -->
-    <div class="container container-blog stick stick-2">
+    <div class="container container-blog stick stick-2" id="stick-2">
             <h4>Blog post</h4>
             <input type="text" name="blogTitle" id="blogTitle" placeholder="Your blog title">
             <textarea name="message" id="blogBody" cols="30" rows="10"></textarea>

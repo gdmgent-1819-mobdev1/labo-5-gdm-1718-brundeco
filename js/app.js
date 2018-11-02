@@ -1,4 +1,5 @@
 let message = document.getElementById('message');
+let message2 = document.getElementById('message2');
 message.setAttribute('class', 'container margin-top');
 
 (function() {
@@ -19,15 +20,26 @@ message.setAttribute('class', 'container margin-top');
   const btnLogin = document.getElementById('btnLogin');
   const btnSignUp = document.getElementById('btnSignUp');
   const btnLogout = document.getElementById('btnLogout');
+  const btnLogout2 = document.getElementById('btnLogout2');
 
   btnLogin.addEventListener('click', e => {
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
+    let loginForm = document.getElementById('stick-1');
+    let succesForm = document.getElementById('stick-3');
+    let blogForm = document.getElementById('stick-2');
+   
 
     const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.then(loginSuccesfull, message.innerHTML = 'Welcome ' + email + '!');
+    promise.then();
     promise.catch(e => message.innerHTML = 'Fail');
+    loginForm.style.display = 'none';
+    succesForm.style.visibility = 'visible';
+    btnLogout2.classList.remove('hide');
+    blogForm.style.visibility = 'visible';
+
+
   });
 
 
@@ -49,16 +61,19 @@ message.setAttribute('class', 'container margin-top');
 
 
 
+
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
-      console.log(firebaseUser);
+      // console.log(firebaseUser);
       btnLogout.classList.remove('hide');
 
     } else {
+
       console.log('Not logged in');
       btnLogout.classList.add('hide');
     }
   })
+
 }());
 
 
