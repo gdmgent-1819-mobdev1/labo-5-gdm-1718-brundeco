@@ -1,6 +1,6 @@
 (function () {
-  document.getElementById("btn_signup").addEventListener('click', signup, false);
-  document.getElementById("btn_login").addEventListener('click', login, false);
+  btnSignup.addEventListener('click', signup, false);
+  btnLogin.addEventListener('click', login, false);
 
   requestNotificationPermission();
 })();
@@ -14,7 +14,7 @@ function signup(e) {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function (response) {
     sendNotification('Thanks for signing up to our website! Check your e-mail for account verification!');
-    sendVerificationEmail(response.user);
+    sendVerificationEmail(response.user)
   })
     .catch(function (error) {
     // Handle Errors here.

@@ -1,8 +1,12 @@
 body {
     margin: 0 auto;
-    background-image: linear-gradient(to top, #0acffe 0%, #495aff 100%);
+    background-image: linear-gradient(to bottom, #0acffe 0%, #d8d8d8 100%);
     background-size: contain;
     background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #margin-bottom {
@@ -10,7 +14,7 @@ body {
 }
 
 .margin-top {
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 #currentUser {
@@ -22,30 +26,68 @@ body {
     margin-top: 50px;
 }
 
-.stick {
+.cont-padding {
     background-color: rgb(245, 245, 245);
     padding: 50px;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 60%;
-    margin: 100px auto;
 }
 
-.stick-2 {
-    visibility: hidden;
-}
-
-#btnLogin, #btnSignUp, #btnLogout {
+#btnLogin, #btnSignup {
     margin-top: 20px;
+    border: 1px solid #e91e63 !important;
+}
+
+#btnLogout {
+    margin-top: 20px;
+    border: 1px solid #0acffe !important;
+}
+
+#btnLogin:hover, #btnSignup:hover {
+    background-color: rgb(245, 245, 245) !important;
+    color: black;
+    transition: 0s ease-in-out !important;
+    box-shadow: none !important;
+    border: 1px solid #e91e63 !important;
+}
+
+#btnLogout:hover {
+    border: 1px solid #0acffe !important;
+    background-color: rgb(245, 245, 245) !important;
+    color: black;
 }
 
 #btnLogout {
     background-color: #0acffe !important;
+    visibility: hidden;
 }
 
 #btnPost {
     background-color: #495aff !important;
 }
 
+#btnPost:hover {
+    border: 1px solid #495aff !important;
+    color: #495aff !important;
+    background-color: rgb(245, 245, 245) !important;
+    box-shadow: none !important;
+}
+
 input:focus {
-    border-bottom: 1px solid #d63636 !important;
+    box-shadow: 0px 0px 0px white !important;
+    border-bottom: 1px solid rgb(4, 0, 255) !important;
+}
+
+#message, #message2 {
+    margin-left: 0;
+    margin-top: 20px;
+    color: rgb(165, 165, 165);
+}
+
+#loginForm {
+    height: 50%;
+}
+
+#succesForm, #blogForm {
+    display: none;
 }

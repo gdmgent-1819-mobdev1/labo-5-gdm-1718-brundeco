@@ -15,26 +15,24 @@
 
 <body>
     <!-- - - - - - - - - - - - - - - LOG IN - - - - - - - - - - - - - - -->
-    <div class="container container-login stick stick-1" id="stick-1">
+    <div class="container container-login cont-padding" id="loginForm">
         <h4>Please login / register</h4>
         <input type="text" id="txtEmail" placeholder="email">
         <input type="password" id="txtPassword" placeholder="password">
-
         <button id="btnLogin" class="btn btn-action pink lighten-1>">Log in</button>
-        <button id="btnSignUp" class="btn btn-secondary pink lighten-7>">Sign up</button>
-        <button id="btnLogout" class="btn btn-action hide cyan accent-2>">Log out</button>
+        <button id="btnSignup" class="btn btn-secondary pink lighten-7>">Sign up</button>
         <div id="message" class="container"></div>
     </div>
 
     <!-- - - - - - - - - - - - - - - LOG IN SUCCES - - - - - - - - - - - - - - -->
-    <div class="container container-login stick stick-2" id="stick-3">
+    <div class="container container-login cont-padding margin-top" id="succesForm">
         <h4>Succes!</h4>
-        <button id="btnLogout2" class="btn btn-action hide cyan accent-2>">Log out</button>
         <div id="message2" class="container"></div>
+        <button id="btnLogout" class="btn btn-action cyan accent-2>">Log out</button>
     </div>
 
     <!-- - - - - - - - - - - - - - - BLOG - - - - - - - - - - - - - - -->
-    <div class="container container-blog stick stick-2" id="stick-2">
+    <div class="container container-blog cont-padding" id="blogForm">
             <h4>Blog post</h4>
             <input type="text" name="blogTitle" id="blogTitle" placeholder="Your blog title">
             <textarea name="message" id="blogBody" cols="30" rows="10"></textarea>
@@ -50,9 +48,10 @@
     <script>
         CKEDITOR.replace( 'blogBody' );
     </script>
-    <script src="js/app.js"></script>
-    <script src="js/notification.js"></script>
-    <script src="js/blog.js"></script>
+    <script src="js2/app.js"></script>
+    <script src="js2/functions.js"></script>
+    <script src="js2/notification.js"></script>
+    <script src="js2/blog.js"></script>
   </body>
 
   </html>
