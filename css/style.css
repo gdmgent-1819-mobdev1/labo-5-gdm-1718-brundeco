@@ -9,6 +9,10 @@ body {
     justify-content: center;
 }
 
+button {
+    box-shadow: none !important;
+}
+
 #margin-bottom {
     margin-bottom: 40px;
 }
@@ -70,7 +74,6 @@ body {
     border: 1px solid #495aff !important;
     color: #495aff !important;
     background-color: rgb(245, 245, 245) !important;
-    box-shadow: none !important;
 }
 
 input:focus {
