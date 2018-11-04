@@ -21,13 +21,15 @@ function writeBlogPost() {
     // Collect the values from the form inputfields
     const blogTitle = document.getElementById('blogTitle').value;
     const blogBody = document.getElementById('blogBody').value;
+    const blogWriter = 'My name';
     console.log(blogBody);
 
      // Put form data in a blogdata oject
     let blogData = {
         date: today,
         body: blogBody,
-        title: blogTitle        
+        title: blogTitle,
+        writer: blogWriter
     }
     // Push the object data to firebase database
     ref.push(blogData);
