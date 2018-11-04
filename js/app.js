@@ -9,39 +9,45 @@
   };
   firebase.initializeApp(config);
 
-  // creating our variables
+  // Get button elements and pass/email values
   const txtEmail = document.getElementById('txtEmail');
   const txtPassword = document.getElementById('txtPassword');
   const btnLogin = document.getElementById('btnLogin');
   const btnSignup = document.getElementById('btnSignup');
   const btnLogout = document.getElementById('btnLogout');
-
+  
+  // Get div elements to toggle hide and visible
   const loginForm = document.getElementById('loginForm');
   const succesForm = document.getElementById('succesForm');
   const blogForm = document.getElementById('blogForm');
 
+  // get message divs 
   const message = document.getElementById('message');
   const message2 = document.getElementById('message2');
 
+  // firebase login at buttonclick
   btnLogin.addEventListener('click', e => {
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
     const promise = auth.signInWithEmailAndPassword(email, pass);
+    // call loginSuccessful to display notification
     promise.then(loginSuccessful);
     promise.catch(e => message.innerHTML = e.message);
   });
 
+  // firebase signup at buttonclick
   btnSignup.addEventListener('click', e => {
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
-
     const promise = auth.createUserWithEmailAndPassword(email, pass);
+    // call registerSuccessful to display notification
     promise.then(registerSuccessful);
     promise.catch(e => message.innerHTML = e.message);
   });
 
+  // firebase logout at buttonclick
   btnLogout.addEventListener('click', e => {
     firebase.auth().signOut().then(function() {
       location.reload();
@@ -49,11 +55,10 @@
     });
   });
 
+  // check for statechanges, toggle on and off other divs accordingly
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
       let email = txtEmail.value;
-      // console.log(firebaseUser);
-      console.log(email);
       loginForm.style.display = 'none';
       btnLogout.style.visibility = 'visible';
       succesForm.style.display = 'block';
@@ -63,7 +68,6 @@
       console.log('Not logged in');
     }
   })
-
 }());
 
 

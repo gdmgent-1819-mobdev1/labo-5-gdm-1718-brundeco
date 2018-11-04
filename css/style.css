@@ -1,6 +1,6 @@
 body {
     margin: 0 auto;
-    background-image: linear-gradient(to bottom, #0acffe 0%, #d8d8d8 100%);
+    background-image: linear-gradient(to bottom, #001aff 0%, #2ee2ff 100%);
     background-size: contain;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -37,13 +37,20 @@ button {
     width: 60%;
 }
 
-#btnLogin, #btnSignup {
-    margin-top: 20px;
-    border: 1px solid #e91e63 !important;
+#btnLogin {
+    margin-top: 40px;
+    border: 1px solid #495aff !important;
+    background-color: #495aff !important;
+}
+
+#btnSignup {
+    margin-top: 40px;
+    background-color: #6876ff !important;
+    border-color:  #6876ff !important
 }
 
 #btnLogout {
-    margin-top: 20px;
+    margin-top: 40px;
     border: 1px solid #0acffe !important;
 }
 
@@ -52,7 +59,7 @@ button {
     color: black;
     transition: 0s ease-in-out !important;
     box-shadow: none !important;
-    border: 1px solid #e91e63 !important;
+    border: 1px solid #495aff !important;
 }
 
 #btnLogout:hover {
@@ -84,6 +91,13 @@ input:focus {
 #message, #message2 {
     margin-left: 0;
     margin-top: 20px;
+}
+
+#message {
+    color: rgb(255, 0, 98);
+}
+
+#message2 {
     color: rgb(165, 165, 165);
 }
 
@@ -93,4 +107,10 @@ input:focus {
 
 #succesForm, #blogForm {
     display: none;
+}
+
+h6 {
+    color: rgb(165, 165, 165);
+    font-size: 100%;
+    margin-bottom: 15px;
 }
