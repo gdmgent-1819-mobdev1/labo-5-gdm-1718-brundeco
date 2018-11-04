@@ -25,26 +25,51 @@
   const message = document.getElementById('message');
   const message2 = document.getElementById('message2');
 
+
   // firebase login at buttonclick
   btnLogin.addEventListener('click', e => {
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
+
     const promise = auth.signInWithEmailAndPassword(email, pass);
     // call loginSuccessful to display notification
-    promise.then(loginSuccessful);
+    promise.then(e => {
+      loginSuccessful();
+    })
     promise.catch(e => message.innerHTML = e.message);
   });
+
+  // send email to registered address to complete sign up
+  function sendMeAnEmailPlease(email) {
+    email.sendEmailVerification()
+        .then(function() {
+            console.log('Email verification link sent');
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    }  
 
   // firebase signup at buttonclick
   btnSignup.addEventListener('click', e => {
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
+
+    let user = email;
+    console.log(user)
+
+    const promise = auth.createUserWithEmailAndPassword(email, pass)
+    promise.then(e => {
+    // send email verification link
+      sendMeAnEmailPlease(e.user);
     // call registerSuccessful to display notification
-    promise.then(registerSuccessful);
-    promise.catch(e => message.innerHTML = e.message);
+      registerSuccessful();
+    })
+    promise.catch(e => {
+      message.innerHTML = e.message;
+    });
   });
 
   // firebase logout at buttonclick
@@ -53,21 +78,24 @@
       location.reload();
       console.log(firebaseUser);
     });
-  });
+  }); 
 
   // check for statechanges, toggle on and off other divs accordingly
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
       let email = txtEmail.value;
-      loginForm.style.display = 'none';
-      btnLogout.style.visibility = 'visible';
-      succesForm.style.display = 'block';
-      blogForm.style.display = 'block';
-      message2.innerHTML += 'Welcome ' + email;
+      
+      (function(){
+        loginForm.style.display = 'none';
+        btnLogout.style.visibility = 'visible';
+        succesForm.style.display = 'block';
+        blogForm.style.display = 'block';
+        message2.innerHTML += 'Welcome ' + email;
+      })();
+
+      // let uid = firebaseUser.uid;
     } else {
       console.log('Not logged in');
     }
   })
 }());
-
-

@@ -1,44 +1,37 @@
 // Get current data
 let today = new Date();
 let dd = today.getDate();
-let mm = today.getMonth()+1; //January is 0!
+let mm = today.getMonth()+1;
 let yyyy = today.getFullYear();
 let hh = today.getHours();
 let min = today.getMinutes();
-today = 'Posted at ' + mm + '-' + dd + '-' + yyyy + ' at ' + hh + ':' + mm + ' hr';
+
+// Get firebase reference and create a child object called blogposts
+const database = firebase.database();
+const ref = database.ref('blogposts');
 
 // Get post button
-let btnPost = document.getElementById('btnPost');
+const btnPost = document.getElementById('btnPost');
 
-// Get database object
-let database = firebase.database();
+// Create function to add data to database
+function writeBlogPost() {
+    // Put current data in a string
+    today = 'Posted at ' + mm + '-' + dd + '-' + yyyy + ' at ' + hh + ':' + mm + ' hr';
+    
+    // Collect the values from the form inputfields
+    const blogTitle = document.getElementById('blogTitle').value;
+    const blogBody = document.getElementById('blogBody').value;
+    console.log(blogBody);
 
-function writeNewPost(uid) {
-    let title = document.getElementById('blogTitle').value;
-    let body = document.getElementById('blogBody').value;
-    let date = today;
-    let author = 'Brunno De Koene';
-    // A post entry.
-    let postData = {
-        author: author,
-        title: title,
-        body: body,
-        date: date,
-        uid: uid
-    };
-
-    // Get a key for a new Post.
-    let newPostKey = firebase.database().ref().child('blogPosts').push().key;
-
-    // Write the new post's data simultaneously in the posts list and the user's post list.
-    let updates = {};
-    updates['/posts/' + newPostKey] = postData;
-    updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-    return firebase.database().ref().update(updates);
+     // Put form data in a blogdata oject
+    let blogData = {
+        date: today,
+        body: blogBody,
+        title: blogTitle        
+    }
+    // Push the object data to firebase database
+    ref.push(blogData);
 }
 
-btnPost.addEventListener('click', writeNewPost);
-
-
+btnPost.addEventListener('click', writeBlogPost);
 
