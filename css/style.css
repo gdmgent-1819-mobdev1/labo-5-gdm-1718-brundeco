@@ -67,6 +67,17 @@ button {
     margin-bottom: 10px;
 }
 
+#passwordForgotten {
+    color: rgb(64, 3, 206);
+    background-color: rgb(256, 256, 256, 0);
+    margin-top: 40px;
+    border: 1px solid rgb(0, 38, 255, 0);
+}
+
+#passwordForgotten:hover {
+    border: 1px solid rgb(64, 3, 206);
+}
+
 #btnLogin:hover, #btnSignup:hover {
     background-color: rgb(245, 245, 245) !important;
     color: black;
@@ -181,7 +192,19 @@ h5 {
 }
 
 .editPostBtn:hover, .editPostBtn:focus {
-    color: black;
-    border: 1px solid black;
+    color: orange;
+    border: 1px solid orange;
     cursor: pointer;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0px;
+}
+
+span.name-style {
+    color: orange;
 }

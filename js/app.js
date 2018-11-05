@@ -35,7 +35,6 @@
   const message = document.getElementById('message');
   const message2 = document.getElementById('message2');
 
-
   // firebase login at buttonclick
   btnLogin.addEventListener('click', e => {
     const email = txtEmail.value;
@@ -53,6 +52,21 @@
     })
     promise.catch(e => message.innerHTML = e.message);
   });
+
+//Forgot password
+document.getElementById('passwordForgotten').addEventListener('click', function(e){
+  // e.preventDefault();
+  let auth = firebase.auth();
+  const email = txtEmail.value;
+
+  auth.sendPasswordResetEmail(email).then(function() {
+    // Email sent
+      message.innerHTML = 'An email with a link to reset your password has been sent.';
+  }).catch(function(error) {
+    // Something went wrong
+    console.log('Something went wrong');
+  });
+});
 
   // send email to registered address to complete sign up
   function sendMeAnEmailPlease(email) {
