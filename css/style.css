@@ -58,6 +58,7 @@ button {
 #btnSignup {
     margin-top: 40px;
     background-color: #6876ff !important;
+    border: 1px solid #495aff !important;
     border-color:  #6876ff !important
 }
 
@@ -79,7 +80,7 @@ button {
 }
 
 #btnLogin:hover, #btnSignup:hover {
-    background-color: rgb(245, 245, 245) !important;
+    background-color: rgb(245, 245, 245, 0) !important;
     color: black;
     transition: 0s ease-in-out !important;
     box-shadow: none !important;
@@ -187,6 +188,7 @@ h5 {
     right: 10%;
     padding: 5px;
     border: 1px solid rgb(0, 38, 255);
+    background-color: rgb(255, 255, 255, 0.8);;
     color:  rgb(0, 38, 255);
     border-radius: 5px;
 }
@@ -203,6 +205,7 @@ footer {
     justify-content: center;
     align-items: center;
     margin: 30px 0px;
+    display: none;
 }
 
 span.name-style {
