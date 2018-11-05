@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
@@ -35,16 +38,15 @@
 
     <!-- - - - - - - - - - - - - - - CREATE BLOG POST - - - - - - - - - - - - - - -->
     <div class="container container-blog cont-padding" id="blogForm">
-        <h4>Create new story</h4>
+        <h4 class="go-low">Create new story</h4>
         <input type="text" name="blogTitle" id="blogTitle" placeholder="Your blog title">
-        <!-- <textarea name="message" id="blogBody" cols="30" rows="10" style="width: 100px;"></textarea> -->
         <textarea name="message" id="blogBody" cols="30" rows="10" style="width: 100px;"></textarea>
         <button id="btnPost" class="margin-top btn btn-action pink lighten-7">Post</button>
     </div>
 
     <!-- - - - - - - - - - - - - - - DISPLAY BLOG POST - - - - - - - - - - - - - - -->
     <div class="container container-blog cont-padding" id="blogResults">
-
+        <h4 class="go-low">Blog feed</h4>
     </div>
 
 

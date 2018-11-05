@@ -9,6 +9,11 @@
   };
   firebase.initializeApp(config);
 
+  // check if user exists in local storage
+  if(localStorage.getItem('currentUser') === null) {
+    firebase.auth().signOut();
+  }
+
   // Put currentuser in localstorage
   let currentLoggedInUser = [];
 
@@ -88,7 +93,8 @@
       location.reload();
       console.log(firebaseUser);
     });
-  }); 
+  });
+
 
   // check for statechanges, toggle on and off other divs accordingly
   firebase.auth().onAuthStateChanged(firebaseUser => {

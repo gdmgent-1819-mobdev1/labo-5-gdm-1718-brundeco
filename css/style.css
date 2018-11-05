@@ -135,3 +135,20 @@ h6 {
         flex-direction: row;
     }
 }
+
+.lined {
+    box-shadow: 3px 3px 3px rgb(206, 206, 206);
+    padding: 30px;
+    margin-bottom: 50px;    
+    border-radius: 10px;
+}
+
+h5 {
+    font-weight: bold;
+    color: black;
+    font-size: 150%;
+}
+
+.go-low {
+    margin-bottom: 20px;
+}

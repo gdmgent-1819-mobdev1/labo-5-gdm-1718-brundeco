@@ -39,7 +39,7 @@ function writeBlogPost() {
     btnPost.addEventListener('click', writeBlogPost);
 
 
-// listen to the value event of ref element
+// check for value changes in firebase database
 ref.on('value', gotData, errData);
 
 function gotData(data) {
@@ -56,13 +56,15 @@ function gotData(data) {
 
         // create a main container
         let mainDiv = document.createElement('div');
+        mainDiv.setAttribute('class', 'lined');
+        blogResults.removeChild
         blogResults.appendChild(mainDiv);
 
         // create variables that hold the blogpost object data
-        let displayBlogTitle = document.createElement('h5').innerHTML = titles;
-        let displayBlogContent = document.createElement('h5').innerHTML = contents;
-        let displayBlogDate = document.createElement('h5').innerHTML = dates;
-        let displayBlogAuthor = document.createElement('h5').innerHTML = authors;
+        let displayBlogTitle = '<h5>' +  titles  + '</h5>';
+        let displayBlogContent =  '<p>' + contents + '</p>';
+        let displayBlogDate = '<h6>' + dates + '</h6>';
+        let displayBlogAuthor = 'Author: <a>' + authors + '</a>';
         
         console.log(displayBlogTitle);
         console.log(displayBlogContent);
@@ -70,10 +72,15 @@ function gotData(data) {
         console.log(displayBlogAuthor);
 
         // try to append childnodes to parentnodes --- > ERROR
-        mainDiv.appendChild(displayBlogTitle);
-        mainDiv.appendChild(displayBlogContent);
-        mainDiv.appendChild(displayBlogDate);
-        mainDiv.appendChild(displayBlogAuthor);
+        mainDiv.innerHTML += displayBlogTitle;
+        mainDiv.innerHTML += displayBlogContent;
+        mainDiv.innerHTML += displayBlogDate;
+        mainDiv.innerHTML += displayBlogAuthor;
+
+        // mainDiv.appendChild(displayBlogTitle);
+        // mainDiv.appendChild(displayBlogContent);
+        // mainDiv.appendChild(displayBlogDate);
+        // mainDiv.appendChild(displayBlogAuthor);
     }
 }
 
