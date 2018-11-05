@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-custom_1);
+      }
+
+      .cls-2 {
+        fill: red;
+      }
+
+      .cls-3 {
+        fill: #00d8ff;
+      }
+    </style>
+    <clipPath id="clip-custom_1">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="custom_1" data-name="custom – 1" class="cls-1">
+    <circle id="Ellipse_1" data-name="Ellipse 1" class="cls-2" cx="12.473" cy="12.473" r="12.473" transform="translate(3.527 3.527)"/>
+    <circle id="Ellipse_2" data-name="Ellipse 2" class="cls-3" cx="4.491" cy="4.491" r="4.491" transform="translate(11.509 11.509)"/>
+  </g>
+</svg>

@@ -1,9 +1,9 @@
 body {
     margin: 0 auto;
     background-image: linear-gradient(to bottom, #001aff 0%, #2ee2ff 100%);
-    background-image: url(../images/background.svg);
+    background-image: url(../images/background-2.svg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -33,10 +33,20 @@ button {
 }
 
 .cont-padding {
-    background-color: rgb(245, 245, 245, 0.5);
+    background-color: rgb(245, 245, 245, 1);
     padding: 50px;
     border-radius: 10px;
     width: 60%;
+}
+
+.hover-effect {
+    transition: 0.5s ease-in-out;
+    background-color: rgb(245, 245, 245, 0.6);
+}
+
+.hover-effect:hover {
+    background-color: rgb(245, 245, 245, 0.2);
+    transition: 0.5s ease-in-out;
 }
 
 #btnLogin {
@@ -148,7 +158,7 @@ h6 {
     margin-bottom: 50px;
     border-radius: 10px;
     position: relative;
-    background-color: white;
+    background-color: rgb(255, 255, 255, 0.8);
 }
 
 h5 {
