@@ -1,7 +1,8 @@
 body {
     margin: 0 auto;
     background-image: linear-gradient(to bottom, #001aff 0%, #2ee2ff 100%);
-    background-size: contain;
+    background-image: url(../images/background.svg);
+    background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
@@ -32,7 +33,7 @@ button {
 }
 
 .cont-padding {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(245, 245, 245, 0.5);
     padding: 50px;
     border-radius: 10px;
     width: 60%;
@@ -115,6 +116,12 @@ input:focus {
     display: none;
 }
 
+#blogResults {
+    overflow: scroll;
+    max-height: 800px;
+    margin-bottom: 50px;
+}
+
 #succesForm {
     padding: 20px 50px;
 }
@@ -137,10 +144,11 @@ h6 {
 }
 
 .lined {
-    box-shadow: 3px 3px 3px rgb(206, 206, 206);
-    padding: 30px;
-    margin-bottom: 50px;    
+    padding: 40px;
+    margin-bottom: 50px;
     border-radius: 10px;
+    position: relative;
+    background-color: white;
 }
 
 h5 {
@@ -151,4 +159,19 @@ h5 {
 
 .go-low {
     margin-bottom: 20px;
+}
+
+.editPostBtn {
+    position: absolute;
+    right: 10%;
+    padding: 5px;
+    border: 1px solid rgb(0, 38, 255);
+    color:  rgb(0, 38, 255);
+    border-radius: 5px;
+}
+
+.editPostBtn:hover, .editPostBtn:focus {
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
 }

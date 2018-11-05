@@ -9,12 +9,14 @@ let min = today.getMinutes();
 // Get firebase reference and create a child object called blogposts
 const database = firebase.database();
 const ref = database.ref('blogposts');
+let currentUserId = localStorage.getItem('currentUserId');;
+console.log(currentUserId);
 
 // Get post button
 const btnPost = document.getElementById('btnPost');
 
-// Create function to add data to database
-function writeBlogPost() {
+// Create function to collect data from input fields
+function fetchBlogPostData() {
     // Put current data in a string
     today = 'Posted at ' + mm + '-' + dd + '-' + yyyy + ' at ' + hh + ':' + mm + ' hr';
     
@@ -24,7 +26,7 @@ function writeBlogPost() {
     const blogAuthor = localStorage.getItem('currentUser');
     const blogDate = today;
 
-     // Put form data in a blogdata oject
+    // Put form data in a blogdata oject
     let blogData = {
         date: blogDate,
         content: blogContent,
@@ -36,18 +38,19 @@ function writeBlogPost() {
     console.log(ref);
 }
     // add event listener to post button
-    btnPost.addEventListener('click', writeBlogPost);
+    btnPost.addEventListener('click', fetchBlogPostData);
 
 
 // check for value changes in firebase database
-ref.on('value', gotData, errData);
+ref.on('value', writeBlogPost, errData);
 
-function gotData(data) {
+function writeBlogPost(data, uid) {
     let posts = data.val();
     let keys = Object.keys(posts);
-
+    
     // loop through contents of each post
     for(let i = 0; i < keys.length; i++) {
+
         let k = keys[i];
         let titles = posts[k].title;
         let contents = posts[k].content;
@@ -65,22 +68,16 @@ function gotData(data) {
         let displayBlogContent =  '<p>' + contents + '</p>';
         let displayBlogDate = '<h6>' + dates + '</h6>';
         let displayBlogAuthor = 'Author: <a>' + authors + '</a>';
-        
-        console.log(displayBlogTitle);
-        console.log(displayBlogContent);
-        console.log(displayBlogDate);
-        console.log(displayBlogAuthor);
+        let edit = '<button class="editPostBtn">' + 'Edit post' + '</button>';
 
-        // try to append childnodes to parentnodes --- > ERROR
+        // add content to maindiv
         mainDiv.innerHTML += displayBlogTitle;
         mainDiv.innerHTML += displayBlogContent;
         mainDiv.innerHTML += displayBlogDate;
         mainDiv.innerHTML += displayBlogAuthor;
+        mainDiv.innerHTML += edit;
 
-        // mainDiv.appendChild(displayBlogTitle);
-        // mainDiv.appendChild(displayBlogContent);
-        // mainDiv.appendChild(displayBlogDate);
-        // mainDiv.appendChild(displayBlogAuthor);
+        // blogPostSuccessful();
     }
 }
 
@@ -88,3 +85,6 @@ function errData(err) {
     console.log('error!');
     console.log(err);
 }
+
+
+

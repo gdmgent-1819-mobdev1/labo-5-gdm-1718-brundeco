@@ -33,3 +33,20 @@ function registerSuccessful() {
     });
   }
 }
+
+function blogPostSuccessful() {
+  const text = 'Your post has been added';
+  if (!("Notification" in window)) {
+    alert("This browser does not support system notifications");
+  }
+  else if (Notification.permission === "granted") {
+    let notification = new Notification("Done!", {body: text});
+  }
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      if (permission === "granted") {
+        let notification = new Notification("Done!", {body: text});
+      }
+    });
+  }
+}

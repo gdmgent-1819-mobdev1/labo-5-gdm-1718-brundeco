@@ -16,6 +16,7 @@
 
   // Put currentuser in localstorage
   let currentLoggedInUser = [];
+  let currentLoggedInUserId = [];
 
   // Get button elements and pass/email values
   const txtEmail = document.getElementById('txtEmail');
@@ -99,6 +100,10 @@
   // check for statechanges, toggle on and off other divs accordingly
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
+
+      userId = firebaseUser.uid;
+      currentLoggedInUserId.push(userId);
+      localStorage.setItem('currentUserId', currentLoggedInUserId[0]);
 
       (function(){
         loginForm.style.display = 'none';
