@@ -9,6 +9,9 @@
   };
   firebase.initializeApp(config);
 
+  // Put currentuser in localstorage
+  let currentLoggedInUser = [];
+
   // Get button elements and pass/email values
   const txtEmail = document.getElementById('txtEmail');
   const txtPassword = document.getElementById('txtPassword');
@@ -20,6 +23,7 @@
   const loginForm = document.getElementById('loginForm');
   const succesForm = document.getElementById('succesForm');
   const blogForm = document.getElementById('blogForm');
+  const blogResults = document.getElementById('blogResults');
 
   // get message divs 
   const message = document.getElementById('message');
@@ -35,7 +39,11 @@
     const promise = auth.signInWithEmailAndPassword(email, pass);
     // call loginSuccessful to display notification
     promise.then(e => {
+      // call loginSuccessful to display notification
       loginSuccessful();
+      // put current user in local storage to display user in message form
+      currentLoggedInUser.push(email);
+      localStorage.setItem('currentUser', currentLoggedInUser[0]);
     })
     promise.catch(e => message.innerHTML = e.message);
   });
@@ -62,10 +70,12 @@
 
     const promise = auth.createUserWithEmailAndPassword(email, pass)
     promise.then(e => {
-    // send email verification link
+      // send email verification link
       sendMeAnEmailPlease(e.user);
-    // call registerSuccessful to display notification
+      // call registerSuccessful to display notification
       registerSuccessful();
+      currentLoggedInUser.push(email);
+      localStorage.setItem('currentUser', currentLoggedInUser[0]);
     })
     promise.catch(e => {
       message.innerHTML = e.message;
@@ -83,19 +93,20 @@
   // check for statechanges, toggle on and off other divs accordingly
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
-      let email = txtEmail.value;
-      
+
       (function(){
         loginForm.style.display = 'none';
         btnLogout.style.visibility = 'visible';
         succesForm.style.display = 'block';
         blogForm.style.display = 'block';
-        message2.innerHTML += 'Welcome ' + email;
+        blogResults.style.display = 'block';
+        message2.innerHTML += 'Welcome ' + localStorage.getItem('currentUser');
       })();
 
-      // let uid = firebaseUser.uid;
     } else {
       console.log('Not logged in');
     }
   })
 }());
+
+

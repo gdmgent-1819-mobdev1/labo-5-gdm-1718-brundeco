@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <!-- - - - - - - - - - - - - - - LOG IN - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - - LOG IN FORM- - - - - - - - - - - - - - -->
     <div class="container container-login cont-padding" id="loginForm">
         <h4>Please login</h4>
         <h6>If you don't have an account please sign up first</h6>
@@ -26,26 +26,36 @@
         <div id="message" class="container"></div>
     </div>
 
-    <!-- - - - - - - - - - - - - - - LOG IN SUCCES - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - - LOG IN SUCCES FORM - - - - - - - - - - - - - - -->
     <div class="container container-login cont-padding margin-top" id="succesForm">
-        <h4>Succes!</h4>
+        <h4 id="actionSuccessful">Succes!</h4>
         <div id="message2" class="container"></div>
         <button id="btnLogout" class="btn btn-action cyan accent-2>">Log out</button>
     </div>
 
-    <!-- - - - - - - - - - - - - - - BLOG - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - - CREATE BLOG POST - - - - - - - - - - - - - - -->
     <div class="container container-blog cont-padding" id="blogForm">
-            <h4>Blog post</h4>
-            <input type="text" name="blogTitle" id="blogTitle" placeholder="Your blog title">
-            <textarea name="message" id="blogBody" cols="30" rows="10" style="width: 100px;"></textarea>
-            <input type="text" name="blogDate" id="blogDate">
-            <input type="text" name="blogAuthor" id="blogAuthor">
-            <button id="btnPost" class="margin-top btn btn-action pink lighten-7">Post</button>
-            <!-- <button id="justAPost" class="margin-top btn btn-action pink lighten-7">Just a post</button> -->
+        <h4>Create new story</h4>
+        <input type="text" name="blogTitle" id="blogTitle" placeholder="Your blog title">
+        <textarea name="message" id="blogBody" cols="30" rows="10" style="width: 100px;"></textarea>
+        <input type="text" name="blogDate" id="blogDate">
+        <input type="text" name="blogAuthor" id="blogAuthor">
+        <button id="btnPost" class="margin-top btn btn-action pink lighten-7">Post</button>
     </div>
 
-    <!-- - - - - - - - - - - - - - - BLOG - - - - - - - - - - - - - - -->
-    <pre id="object"></pre>
+    <!-- - - - - - - - - - - - - - - DISPLAY BLOG POST - - - - - - - - - - - - - - -->
+    <!-- <div class="container container-blog cont-padding" id="blogResults">
+        <h4>Latest blog posts</h4>
+        <h5 id="displayBlogTitle"></h5>
+        <p id="displayBlogContent"></p>
+        <h6 id="displayBlogDate"></h6>
+        <h6 id="displayBlogAuthor"></h6>
+    </div> -->
+
+    <!-- - - - - - - - - - - - - - - DISPLAY BLOG POST - - - - - - - - - - - - - - -->
+    <div class="container container-blog cont-padding" id="blogResults">
+
+    </div>
 
 
     <script>

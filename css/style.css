@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* padding-bottom: 50px; */
 }
 
 button {
@@ -50,8 +51,9 @@ button {
 }
 
 #btnLogout {
-    margin-top: 40px;
     border: 1px solid #0acffe !important;
+    margin-top: 21px;
+    margin-bottom: 10px;
 }
 
 #btnLogin:hover, #btnSignup:hover {
@@ -105,8 +107,16 @@ input:focus {
     height: 50%;
 }
 
-#succesForm, #blogForm {
+#actionSuccessful {
+    margin-top: 10px;
+}
+
+#succesForm, #blogForm, #blogResults {
     display: none;
+}
+
+#succesForm {
+    padding: 20px 50px;
 }
 
 h6 {
