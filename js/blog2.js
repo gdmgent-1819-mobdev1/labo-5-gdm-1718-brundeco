@@ -5,20 +5,32 @@ let mm = today.getMonth()+1;
 let yyyy = today.getFullYear();
 let hh = today.getHours();
 let min = today.getMinutes();
+let blogpostId;
+let dbRefObject = firebase.database().ref().child('blogpostId');
+let blogContainer = document.getElementById('blogContainer');
 
+dbRefObject.on('value', snap => {
+    blogpostId = snap.val() + 1;
+    amountBlog = snap.val();
+    amountBlog2 = amountBlog;
+    console.log(amountBlog2);
+});
+
+console.log(blogpostId);
 // Get firebase reference and create a child object called blogposts
 const database = firebase.database();
-const ref = database.ref('blogposts');
 let currentUserId = localStorage.getItem('currentUserId');;
 console.log(currentUserId);
 
 // Get post button
 const btnPost = document.getElementById('btnPost');
-let blogResults = document.getElementById('blogResults');
 
 // Create function to collect data from input fields
 function fetchBlogPostData() {
     // Put current data in a string
+    console.log(blogpostId);
+    firebase.database().ref('blogpostId').set(blogpostId);
+    let ref = database.ref('blogposts/blogIndex' + blogpostId);
     today = 'Posted at ' + mm + '-' + dd + '-' + yyyy + ' at ' + hh + ':' + mm + ' hr';
     
     // Collect the values from the form inputfields
@@ -41,26 +53,38 @@ function fetchBlogPostData() {
     // add event listener to post button
     btnPost.addEventListener('click', fetchBlogPostData);
 
-
 // check for value changes in firebase database
-ref.on('value', writeBlogPost, errData);
-
-function writeBlogPost(data, uid) {
+dbRefObject.on('value', writeBlogPost, errData);
+function writeBlogPost(data) {
     let posts = data.val();
     let keys = Object.keys(posts);
-    // blogResults.innerHTML = "";
-
+    blogResults.innerHTML = "";
     // loop through contents of each post
-    for(let i = 0; i < keys.length; i++) {
-        // create a main container
-        let mainDiv = document.createElement('div');
-        mainDiv.setAttribute('class', 'lined');
-        
+    for(let i = 0; i < blogpostId; i++) {
+        blogContainer.innerHTML = "<div>";
+        firebase.database().ref.child('blogpostId/blogIndex' + i + '/authors').on('value', snap =>{
+           blogContainer.innerHTML += snap.val();
+        })
+        firebase.database().ref.child('blogpostId/blogIndex' + i + '/contents').on('value', snap =>{
+            blogContainer.innerHTML += snap.val();
+        })
+        firebase.database().ref.child('blogpostId/blogIndex' + i + '/dates').on('value', snap =>{
+            blogContainer.innerHTML += snap.val();
+        })
+        firebase.database().ref.child('blogpostId/blogIndex' + i + '/titles').on('value', snap =>{
+            blogContainer.innerHTML += snap.val();
+        })
+        blogContainer.innerHTML += "</div>";
         let k = keys[i];
         let titles = posts[k].title;
         let contents = posts[k].content;
         let dates = posts[k].date;
         let authors = posts[k].author;
+
+        // create a main container
+        let mainDiv = document.createElement('div');
+        mainDiv.setAttribute('class', 'lined');
+        
 
         // create variables that hold the blogpost object data
         let displayBlogTitle = '<h5>' +  titles  + '</h5>';
@@ -78,6 +102,10 @@ function writeBlogPost(data, uid) {
         blogResults.appendChild(mainDiv);
         // blogPostSuccessful();
     }
+}
+
+function pushBlogPost() {
+
 }
 
 function errData(err) {

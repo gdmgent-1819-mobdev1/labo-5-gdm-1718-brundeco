@@ -6105,19 +6105,19 @@ label {
    ========================================================================== */
 /* Style Placeholders */
 ::-webkit-input-placeholder {
-  color: #d1d1d1;
+  color: rgb(117, 117, 117);
 }
 ::-moz-placeholder {
-  color: #d1d1d1;
+  color: rgb(117, 117, 117);
 }
 :-ms-input-placeholder {
-  color: #d1d1d1;
+  color: rgb(117, 117, 117);
 }
 ::-ms-input-placeholder {
-  color: #d1d1d1;
+  color: rgb(117, 117, 117);
 }
 ::placeholder {
-  color: #d1d1d1;
+  color: rgb(117, 117, 117);
 }
 
 /* Text inputs */

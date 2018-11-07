@@ -15,7 +15,6 @@
   }
 
   // Put currentuser in localstorage
-  let currentDisplayName = [];
   let currentLoggedInUser = [];
   let currentLoggedInUserId = [];
 
@@ -68,7 +67,6 @@
 
   // firebase signup at buttonclick
   btnSignup.addEventListener('click', e => {
-    const name = displayName.value;
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
@@ -84,8 +82,6 @@
       registerSuccessful();
       currentLoggedInUser.push(email);
       localStorage.setItem('currentUser', currentLoggedInUser[0]);
-      currentDisplayName.push(name);
-      localStorage.setItem('currentDisplayName', currentDisplayName[0]);
     })
     promise.catch(e => {
       message.innerHTML = e.message;
@@ -131,7 +127,7 @@ document.getElementById('passwordForgotten').addEventListener('click', function(
         blogForm.style.display = 'block';
         blogResults.style.display = 'block';
         footer.style.display = 'flex';
-        message2.innerHTML += 'Welcome ' + localStorage.getItem('currentDisplayName');
+        message2.innerHTML += 'Signed in as ' + localStorage.getItem('currentUser');
       })();
 
     } else {
