@@ -17,7 +17,7 @@ const btnPost = document.getElementById('btnPost');
 let blogResults = document.getElementById('blogResults');
 
 // Create function to collect data from input fields
-function fetchBlogPostData() {
+function fetchBlogPostData(uid) {
     // Put current data in a string
     today = 'Posted at ' + mm + '-' + dd + '-' + yyyy + ' at ' + hh + ':' + mm + ' hr';
     
@@ -32,23 +32,28 @@ function fetchBlogPostData() {
         date: blogDate,
         content: blogContent,
         title: blogTitle,
-        author: blogAuthor
+        author: blogAuthor,
+        uid: uid
     }
+
     // Push the object data to firebase database
     ref.push(blogData);
     console.log(ref);
+    console.log(blogData);
 }
     // add event listener to post button
     btnPost.addEventListener('click', fetchBlogPostData);
 
 
 // check for value changes in firebase database
-ref.on('value', writeBlogPost, errData);
+ref.on('value', writeBlogPost);
 
 function writeBlogPost(data, uid) {
     let posts = data.val();
     let keys = Object.keys(posts);
     // blogResults.innerHTML = "";
+    // console.log(data);
+    blogResults.innerHTML = "";
 
     // loop through contents of each post
     for(let i = 0; i < keys.length; i++) {
@@ -67,7 +72,7 @@ function writeBlogPost(data, uid) {
         let displayBlogContent =  '<p>' + contents + '</p>';
         let displayBlogDate = '<h6>' + dates + '</h6>';
         let displayBlogAuthor = 'Author: <a>' + authors + '</a>';
-        let edit = '<button class="editPostBtn">' + 'Edit post' + '</button>';
+        let edit = '<button class="editPostBtn" id="' + k + '">' + 'Delete post' + '</button>';
 
         // add content to maindiv
         mainDiv.innerHTML += displayBlogTitle;
@@ -78,12 +83,20 @@ function writeBlogPost(data, uid) {
         blogResults.appendChild(mainDiv);
         // blogPostSuccessful();
     }
+    addEvtListeners();
 }
 
-function errData(err) {
-    console.log('error!');
-    console.log(err);
+function addEvtListeners() {
+    let buttons = document.querySelectorAll('.editPostBtn');
+    console.log(buttons);
+    buttons.forEach(function(button) {
+        button.addEventListener('click', removePost);
+    });
 }
 
-
+function removePost(e) {
+    let key = e.currentTarget.id;
+    console.log(key);
+    database.ref('blogposts/' + key).remove();
+}
 

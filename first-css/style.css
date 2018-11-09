@@ -33,7 +33,7 @@ button {
 }
 
 .cont-padding {
-    background-color: rgb(245, 245, 245, 1);
+    background-color: rgb(245, 245, 245, 0.7);
     padding: 50px;
     border-radius: 10px;
     width: 60%;
