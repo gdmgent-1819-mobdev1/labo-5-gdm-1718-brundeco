@@ -97,7 +97,7 @@
   });
 
 //password reset
-document.getElementById('passwordForgotten').addEventListener('click', function(e){
+document.getElementById('btnPasswordForgotten').addEventListener('click', function(e){
   // e.preventDefault();
   let auth = firebase.auth();
   const email = txtEmail.value;
@@ -107,7 +107,7 @@ document.getElementById('passwordForgotten').addEventListener('click', function(
       message.innerHTML = 'An email with a link to reset your password has been sent.';
   }).catch(function(error) {
     // Something went wrong
-    console.log('Something went wrong');
+    message.innerHTML = 'A recovery link could not be send to this email address';
   });
 });
 

@@ -5,39 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script> -->
+    <link rel="shortcut icon" href="images/media.svg">
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>    
-    <link rel="stylesheet" href="first-css/materialize.css">
-    <script src="ckeditor/ckeditor.js"></script>
-    <link rel="stylesheet" href="first-css/style.css">
-    <link rel="shortcut icon" href="images/media.svg">
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>  
+    <link rel="stylesheet" href="css/vendors/materialize.css">
+    <script src="js/ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" href="css/main.css">
     <title>Firebase</title>
 </head>
 
 <body>
     <!-- - - - - - - - - - - - - - - LOG IN FORM- - - - - - - - - - - - - - -->
-    <div class="container container-login cont-padding hover-effect" id="loginForm">
+    <div class="container container-login cont-general hover-effect" id="loginForm">
         <h4>Please login</h4>
         <h6>If you don't have an account please sign up first</h6>
         <input type="text" id="txtEmail" placeholder="email">
         <input type="password" id="txtPassword" placeholder="password">
         <button id="btnLogin" class="btn btn-action pink lighten-1>">Log in</button>
         <button id="btnSignup" class="btn btn-secondary pink lighten-7>">Sign up</button>
-        <button id="passwordForgotten" class="btn btn-secondary">Password forgotten</button>
-        <div id="message" class="container"></div>
+        <button id="btnPasswordForgotten" class="btn btn-secondary">Password forgotten</button>
+        <div id="message"></div>
     </div>
 
     <!-- - - - - - - - - - - - - - - LOG IN SUCCES FORM - - - - - - - - - - - - - - -->
-    <div class="container container-login cont-padding margin-top" id="succesForm">
+    <div class="container container-login cont-general margin-top" id="succesForm">
         <h4 id="actionSuccessful">Welcome!</h4>
         <div id="message2" class="container"></div>
         <button id="btnLogout" class="btn btn-action cyan accent-2>">Log out</button>
     </div>
 
     <!-- - - - - - - - - - - - - - - CREATE BLOG POST - - - - - - - - - - - - - - -->
-    <div class="container container-blog cont-padding" id="blogForm">
+    <div class="container container-blog cont-general" id="blogForm">
         <h4 class="go-low">Create new story</h4>
         <input type="text" name="blogTitle" id="blogTitle" placeholder="Your blog title">
         <textarea name="message" id="blogBody" cols="30" rows="10" style="width: 100px;"></textarea>
@@ -45,7 +44,7 @@
     </div>
 
     <!-- - - - - - - - - - - - - - - DISPLAY BLOG POST - - - - - - - - - - - - - - -->
-    <div class="container container-blog cont-padding" id="blogResults">
+    <div class="container container-blog cont-general" id="blogResults">
         <h4 class="go-low">Blog feed</h4>
         <div id="blogContainer"></div>
     </div>
@@ -58,10 +57,10 @@
     <script>
         CKEDITOR.replace( 'blogBody' );
     </script>
-    <script src="first-js/app.js"></script>
-    <script src="first-js/notification.js"></script>
-    <script src="first-js/blog.js"></script>
-    <script src="first-js/materialize.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/vendors/materialize.js"></script>
   </body>
 
   </html>

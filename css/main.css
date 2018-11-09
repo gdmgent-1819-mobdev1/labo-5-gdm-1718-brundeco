@@ -1,0 +1,163 @@
+body {
+  margin: 0 auto;
+  background-image: url(../images/background-2.svg);
+  background-size: cover;
+  background-repeat: repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  box-shadow: none !important;
+  border-radius: 7px;
+}
+
+#btnLogin, #btnSignup, #btnPasswordForgotten {
+  margin-top: 40px;
+  border: 1px solid rgba(250, 250, 250, 0);
+}
+
+#btnLogin {
+  background-color: #495aff !important;
+  border: 1px solid #495aff !important;
+}
+
+#btnLogin:hover {
+  background-color: rgba(245, 245, 245, 0) !important;
+  color: #495aff;
+  border: 1px solid #495aff !important;
+}
+
+#btnSignup {
+  background-color: #6876ff !important;
+  border: 1px solid #6876ff !important;
+}
+
+#btnSignup:hover {
+  background-color: rgba(245, 245, 245, 0) !important;
+  color: #6876ff;
+  border: 1px solid #6876ff !important;
+}
+
+#btnPasswordForgotten {
+  background-color: rgba(245, 245, 245, 0) !important;
+  color: #6876ff;
+}
+
+#btnPasswordForgotten:hover {
+  border: 1px solid #6876ff;
+  color: #6876ff;
+}
+
+#btnLogout {
+  background-color: #0acffe !important;
+  border: 1px solid #0acffe !important;
+  margin-top: 20px;
+}
+
+#btnLogout:hover {
+  background-color: rgba(245, 245, 245, 0) !important;
+  border: 1px solid #0acffe !important;
+  color: #000;
+}
+
+#btnPost {
+  background-color: #495aff !important;
+  border: 1px solid #495aff !important;
+  margin-top: 40px;
+}
+
+#btnPost:hover {
+  background-color: rgba(245, 245, 245, 0) !important;
+  border: 1px solid #495aff !important;
+  color: #495aff;
+}
+
+.editPostBtn {
+  position: absolute;
+  right: 10%;
+  padding: 5px;
+  border: 1px solid #495aff;
+  background-color: rgba(245, 245, 245, 0);
+  color: #495aff;
+  border-radius: 7px;
+  font-size: 80%;
+}
+
+.editPostBtn:hover {
+  background-color: rgba(245, 245, 245, 0) !important;
+  border: 1px solid #6876ff !important;
+  color: #6876ff;
+  cursor: pointer;
+}
+
+.cont-general {
+  background-color: rgba(245, 245, 245, 0.7);
+  padding: 50px;
+  margin: 50px auto 0px;
+  border-radius: 7px;
+  width: 60%;
+}
+
+#succesForm, #blogForm, #blogResults {
+  display: none;
+}
+
+#succesForm {
+  background-color: rgba(245, 245, 245, 0);
+}
+
+.posts-layout {
+  padding: 40px;
+  margin-bottom: 50px;
+  border-radius: 7px;
+  position: relative;
+  background-color: rgba(245, 245, 245, 0.7);
+}
+
+#message2 {
+  margin-left: 0;
+  color: #a5a5a5;
+}
+
+#message {
+  margin-top: 20px;
+  color: #ff0062;
+}
+
+h1 {
+  justify-content: center;
+  align-items: center;
+}
+
+h6 {
+  color: #a5a5a5;
+  font-size: 90%;
+}
+
+.name-style {
+  color: orange;
+}
+
+footer {
+  display: none;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+input:focus {
+  box-shadow: 0px 0px 0px #fff !important;
+  border-bottom: 1px solid #495aff !important;
+}
+
+#blogTitle {
+  border: none !important;
+}
+
+.cke_chrome {
+  border: none !important;
+}
+
+/*# sourceMappingURL=main.css.map */

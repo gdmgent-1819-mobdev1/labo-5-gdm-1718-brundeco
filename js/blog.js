@@ -59,7 +59,7 @@ function writeBlogPost(data, uid) {
     for(let i = 0; i < keys.length; i++) {
         // create a main container
         let mainDiv = document.createElement('div');
-        mainDiv.setAttribute('class', 'lined');
+        mainDiv.setAttribute('class', 'posts-layout');
         
         let k = keys[i];
         let titles = posts[k].title;
