@@ -44,7 +44,7 @@ function fetchBlogPostData(uid) {
     // add event listener to post button
     btnPost.addEventListener('click', fetchBlogPostData);
 
-
+let blogContainer = document.getElementById('blogContainer');
 // check for value changes in firebase database
 ref.on('value', writeBlogPost);
 
@@ -53,7 +53,7 @@ function writeBlogPost(data, uid) {
     let keys = Object.keys(posts);
     // blogResults.innerHTML = "";
     // console.log(data);
-    blogResults.innerHTML = "";
+    blogContainer.innerHTML = "";
 
     // loop through contents of each post
     for(let i = 0; i < keys.length; i++) {
@@ -80,7 +80,7 @@ function writeBlogPost(data, uid) {
         mainDiv.innerHTML += displayBlogDate;
         mainDiv.innerHTML += displayBlogAuthor;
         mainDiv.innerHTML += edit;
-        blogResults.appendChild(mainDiv);
+        blogContainer.appendChild(mainDiv);
         // blogPostSuccessful();
     }
     addEvtListeners();
@@ -99,4 +99,3 @@ function removePost(e) {
     console.log(key);
     database.ref('blogposts/' + key).remove();
 }
-

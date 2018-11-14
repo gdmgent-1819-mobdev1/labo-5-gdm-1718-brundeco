@@ -134,6 +134,11 @@ button {
     color: $color-pink;
 }
 
+#blogContainer {
+    overflow: scroll;
+    max-height: 500px;
+}
+
 
 // - - - - - trivia - - - - - -
 h1 {
